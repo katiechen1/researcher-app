@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <h3>{{ researcher.name|capfirst }}</h3>
+  <p>{{ researcher.institution }}</p>
+  <p>{{ researcher.position }}</p>
+  <p>{{ researcher.country }}</p>
+  <p>{{ researcher.website_link }}</p>
+  <p>{{ researcher.linkedin_link }}</p>
+  <p>{{ researcher.level }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  {% for r in researcher %}
+    <div class="researcher">
+      <a href="{% url 'researcher_detail' r.id %}">
+        <h3>{{ r.name|capfirst }}</h3>
+      </a>
+      <p>{{ r.institution }}</p>
+      
+      <p class="hidden">{{ r.level }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
