@@ -1,0 +1,57 @@
+<!-- {% load static %}
+<!<html> -->
+
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home - Women In Microfluidics</title>
+        <link rel="stylesheet" id="ample-style-css" href="{% static 'style.css' %}" type="text/css" media="all">
+    </head>
+    <body class="wide">
+        <div id="page" class="hfeed site">
+            <header>
+                <div class="header">
+                    <div class="main-head-wrap inner-wrap clearfix">
+                        <div id="header-logo-image">
+                            <a href="/">
+                                <img src="{% static 'images/logo.png' %}" alt="Women In Microfluids">
+                            </a>
+                        </div>
+                        <div id="header-text" class="">
+                            <h1 id="site-title">
+                                <a href="/" title="Women In Microfluids" rel="home">Women In Microfluidics</a>
+                            </h1>
+                            <p>Description</p>
+                        </div>
+                    </div>
+                    <img src="{% static 'images/header.jpg' %}" alt="Women In Microfluids">
+                </div>
+            </header>
+            <div class="main-wrapper">
+                <div class="single-page clearfix">
+                    <div class="inner-wrap">
+                        <p>This site was created to showcase women researchers in microfluidics!</p>
+                        <hr>
+                        <div>
+                        {% block content %}
+                        {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer id="colophon">
+                <div class="inner-wrap">
+                    <!-- Wisdom Pet Medicine is a fictitious brand created by Lynda.com, solely for the purpose of training. All products and people associated with Wisdom Pet Medicine are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Please see your veterinarian for all matters related to your pet's health. -->
+                </div>
+            </footer>
+        </div>
+        <script src="{% static 'main.js' %}"></script>
+        <script src="{% static 'js/clean-blog.js' %}"></script>
+        <script src="{% static 'js/clean-blog.min.js' %}"></script>
+        <script src="{% static 'js/contact-me.js' %}"></script>
+        <script src="{% static 'js/contact-me.min.js' %}"></script>
+        <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+        <script src="{% static 'js/jqBootstrapValidation.min.js' %}"></script>
+    </body>
+</html>
+ -->

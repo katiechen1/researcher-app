@@ -12,9 +12,7 @@ class Researcher(models.Model):
     linkedin_link = models.CharField(max_length=200)
     level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
 
-
-
-# our new form
+# This is the form used to nominate a scholar or yourself
 class NominateForm(forms.Form):
     contact_name = forms.CharField(required=True)
     contact_email = forms.EmailField(required=True)
@@ -26,3 +24,16 @@ class NominateForm(forms.Form):
         required=True,
         widget=forms.Textarea
     )
+
+# This is the form we send to nominated individual to get information needed to display
+class NominatedInfo(forms.Form):
+    r_name = forms.CharField(required=True)
+    r_short_description = forms.CharField(required=True,
+        widget=forms.Textarea)
+    r_institution = forms.CharField(required=True)
+    r_position = forms.CharField(required=True)
+    # country = models.CharField(required=True)
+    website_link = forms.CharField(required=True)
+    linkedin_link = forms.CharField(required=True)
+
+
