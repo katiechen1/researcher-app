@@ -54,4 +54,3 @@
         <script src="{% static 'js/jqBootstrapValidation.min.js' %}"></script>
     </body>
 </html>
- -->

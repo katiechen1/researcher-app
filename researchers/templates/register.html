@@ -1,11 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Nominate - {
-{ block.super }}
 
-{% endblock %}
 {% block content %}
 
-<h1>Nominate</h1>
+<h1>Please create an account</h1>
+<p1>Please create an account and you will be redirected to enter your information.</p1>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

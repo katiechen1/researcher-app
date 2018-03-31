@@ -1,11 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Nominate - {
-{ block.super }}
 
-{% endblock %}
 {% block content %}
 
-<h1>Nominate</h1>
+<h1>Your Information</h1>
+<p1>Please fill out this form according to what you want to be displayed on this website.</p1>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

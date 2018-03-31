@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'researchers/(\d+)/', views.researcher_detail, name='researcher_detail'),
     url(r'^nominate/$', views.nominate, name='nominate'),
+    url(r'nomineeinfo/$', views.nominee_info, name='nominee_info'),
+    url(r'register/$', views.register_user, name='register_user')
     ]

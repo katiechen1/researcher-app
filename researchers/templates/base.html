@@ -53,7 +53,7 @@
     
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -75,7 +75,8 @@
             <div> 
             {% block content %}
             <hr>
-            {% endblock %}</div>
+            {% endblock %}
+            </div>
 
           
           <!-- <div class="post-preview">
@@ -119,9 +120,9 @@
           <hr> -->
           
           <!-- Pager -->
-          <div class="clearfix">
+          <!-- <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -159,7 +160,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+            <p class="copyright text-muted">Copyright &copy; QB3 2018</p>
           </div>
         </div>
       </div>
