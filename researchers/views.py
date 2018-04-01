@@ -26,6 +26,9 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+def thanks(request):
+    return render(request, 'thanks.html')
+
 def researcher_detail(request, id):
 
     try:
@@ -60,7 +63,7 @@ def nominate(request):
             msg = 'Hello, you have been nominated to be listed on our website. Please go to localhost:8000/nomineeinfo to register an account and update your information. Thanks.'
             send_mail(subject=subject, message=msg, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
-            return redirect('/nominate')
+            return redirect('/thanks')
 
     return render(request, 'nominate.html', {
         'form': form_class,
@@ -91,7 +94,7 @@ def register_user(request):
                     login(request, user)
 
                     #this should show the form for nominee to fill out
-                    return redirect('/nomineeinfo')
+                    return redirect('/thanks')
         else:
             return render(request, 'register.html', {
         'form': form_class, })
@@ -124,7 +127,7 @@ def nominee_info(request):
             new_nominee.des = request.POST.get('description', '')
             new_nominee.save()
 
-            return redirect('/nomineeinfo')
+            return redirect('/thanks')
 
     return render(request, 'nomineeinfo.html', {
         'form': form_class,
