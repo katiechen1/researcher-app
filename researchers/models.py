@@ -19,7 +19,6 @@ class Researcher(models.Model):
     level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
     des = models.CharField(max_length=200)
 
-
 # This is the form used to nominate a scholar or yourself
 class NominateForm(forms.Form):
     contact_name = forms.CharField(required=True)

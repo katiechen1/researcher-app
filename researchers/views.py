@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.views.generic import View
+from django.conf import settings
 
 
 from django.core.mail import EmailMessage
@@ -21,6 +22,9 @@ from .forms import UserForm
 def home(request):
     r = Researcher.objects.all()
     return render(request, 'home.html', {'researcher': r})
+
+def about(request):
+    return render(request, 'about.html')
 
 def researcher_detail(request, id):
 
@@ -49,36 +53,13 @@ def nominate(request):
             nominee_website = request.POST.get('nominee_website', '')
             nominee_institution = request.POST.get('nominee_institution', '')
 
-            # Email the profile with the 
-            # contact information
-            form_content = 'Hello, you have been nominated to be listed on our website. Please go to www.xyz.register to register an account and update your information. Thanks.'
-            template = get_template('nominate_template.txt')
-            context = {
-                # 'contact_name': nominee_name,
-                # 'contact_email': nominee_email,
-                'form_content': form_content,
-            }
-            content = template.render(context)
+            
+            subject = 'Nomination for Website'
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [str(nominee_email)]
+            msg = 'Hello, you have been nominated to be listed on our website. Please go to localhost:8000/nomineeinfo to register an account and update your information. Thanks.'
+            send_mail(subject=subject, message=msg, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
-
-            #This emails us[katiechen@berkeley.edu] the submission from the form 
-            email = EmailMessage(
-                "Nomination for Website",
-                content,
-                "personalemail@berkeley.edu" +'',
-                [str(nominee_email)],
-                headers = {'Reply-To': "personemail@gmail.com" }
-            )
-            email.send()
-
-            # #TODO: Email the candidate for confirmation 
-            # send_mail(
-            #     'Nomination Confirmation for X_List',
-            #     'Hello, you have been nominated to be listed on our website. Please go to www.xyz.register to register an account and update your information. Thanks.',
-            #     'katiechen@berkeley.edu',
-            #     ['insert_email_here'],
-            #     fail_silently=False,
-            # )
             return redirect('/nominate')
 
     return render(request, 'nominate.html', {
