@@ -8,7 +8,9 @@
 
 {% block content %}
 
-<h1>Nominate</h1>
+<h1>Your information as a Nominator</h1>
+<h3>Self-nominations accepted </h3>
+<p>Please complete the following information regarding the individual you are nominating. We are seeking research-focused nominees, including established industry professionals and Academics (Assistant, Associate, through Full Professor rank). The Nominee will be contacted subsequent to your submission, to confirm their acceptance of the nomination.</p>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}

@@ -69,6 +69,33 @@ def nominate(request):
         'form': form_class,
     })
 
+#prompts nominee to fill out information they want displayed
+def nominee_info(request):
+    form_class = NominatedInfo
+    new_nominee = Researcher()
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            new_nominee.name = request.POST.get('name', '')
+            new_nominee.email = request.POST.get('your_email', '')
+            new_nominee.institution = request.POST.get('institution', '')
+            new_nominee.position = request.POST.get('position', '')
+            
+            new_nominee.website_link = request.POST.get('website', '')
+            new_nominee.linkedin_link = request.POST.get('linkedin', '')
+            new_nominee.level = request.POST.get('level', '')
+            new_nominee.des = request.POST.get('description', '')
+            new_nominee.save()
+
+            return redirect('/thanks')
+
+    return render(request, 'nomineeinfo.html', {
+        'form': form_class,
+    })
+
+
 #creates new authenticated user 
 def register_user(request):
     form_class = UserForm
@@ -106,32 +133,6 @@ def register_user(request):
         'form': form_class, })
     return redirect('/')
 
-#prompts nominee to fill out information they want displayed
-def nominee_info(request):
-    form_class = NominatedInfo
-    new_nominee = Researcher()
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST)
-
-        #need to do something with this data, link it to the nominee
-        if form.is_valid():
-            new_nominee.name = request.POST.get('name', '')
-            # new_nominee.email = request.POST.get('your_email', '')
-            new_nominee.institution = request.POST.get('institution', '')
-            new_nominee.position = request.POST.get('position', '')
-            
-            new_nominee.website_link = request.POST.get('website', '')
-            new_nominee.linkedin_link = request.POST.get('linkedin', '')
-
-            new_nominee.des = request.POST.get('description', '')
-            new_nominee.save()
-
-            return redirect('/thanks')
-
-    return render(request, 'nomineeinfo.html', {
-        'form': form_class,
-    })
 
 
 

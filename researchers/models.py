@@ -10,7 +10,7 @@ from django.utils import timezone
 class Researcher(models.Model):
     LEVELS_CHOICES = [('EC', 'Early Career'), ('MS', 'Mid/Senior Career')]
     name = models.CharField(max_length=200)
-    # email = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
     institution = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
@@ -40,13 +40,12 @@ class NominatedInfo(forms.Form):
     # country = models.CharField(required=True)
     website = forms.CharField(required=True)
     linkedin = forms.CharField(required=True)
+    level = forms.CharField(required=True, max_length=2)
     description = forms.CharField(required=True,
         widget=forms.Textarea)
     # level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
 
-###################
-########|TODO|#####
-###################
+
 
 
 # one nominator can nominate many researchers
@@ -54,8 +53,6 @@ class NominatedInfo(forms.Form):
 
 # #nominator model 
 # class Nominator(models.Model):
-
-    
 
 #     contact_name = forms.CharField(required=True)
 #     contact_email = forms.EmailField(required=True)

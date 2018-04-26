@@ -2,8 +2,9 @@
 
 {% block content %}
 
-<h1>Your Information</h1>
-<p1>Please fill out this form according to what you want to be displayed on this website.</p1>
+<h1>Your information</h1>
+<h4>As a nominee</h4>
+<p1>Please fill out the following information as you prefer it to be displayed on our Women in Microfluidics list. By completing and submitting this information, you are accepting the nomination and would like the information you entered shared on our community-sourced public list. Beyond displaying your information on our website, we will not share your information further. For your "level", please indicate EC or MS for early career and mid/senior career respectively.</p1>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
