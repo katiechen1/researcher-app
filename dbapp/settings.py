@@ -25,7 +25,7 @@ SECRET_KEY = '$oid#6bi+zj^w1+i1=zqz#gt&ds^&yg*9vjnttx&3llv^4dv-_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['microfluidics-berkeley-edu.apphost.ocf.berkeley.edu']
 
 
 # Application definition
@@ -118,7 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://www.ocf.berkeley.edu/~microfluidics/static/'
+STATIC_ROOT = '/home/m/mi/microfluidics/public_html/static'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
