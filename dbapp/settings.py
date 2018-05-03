@@ -25,7 +25,7 @@ SECRET_KEY = '$oid#6bi+zj^w1+i1=zqz#gt&ds^&yg*9vjnttx&3llv^4dv-_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['microfluidics-berkeley-edu.apphost.ocf.berkeley.edu']
+ALLOWED_HOSTS = ['microfluidics-berkeley-edu.apphost.ocf.berkeley.edu', 'localhost']
 
 
 # Application definition

@@ -1,8 +1,12 @@
-Contact Name:
-{{ contact_name }}
+Dear {{ nominee_name }},
 
-Email:
-{{ contact_email }}
+Congratulations! You have been nominated by {{ nominator }} for our Women in Microfluidics list (microfluidics.berkeley.edu).
 
-Content:
-{{ form_content|safe|striptags }}
+What is the Women in Microfluidics list?  We are faculty & researchers who are eager to support and enhance representation of women in our field.  We are developing the list to assist anyone in a position of suggesting or selecting speakers with identifying world class researchers (nominated by their peers) for inclusion in conference, workshop, or university programming or leadership (inspired colleagues in Neuroscience and anneslist.net, as covered in the New York Times).
+
+Why have you been nominated?  One of your colleagues sees you as a notable contributor to our field and took the time to nominate you.  Our list is composed of research-focused, world class nominees, including established industry professionals and Academics (Assistant, Associate, Full Professor, to Emerita rank). So, if you would like to be included in our Women in Microfluidics list, please go to microfluidics.berkeley.edu/nomineeinfo to accept your nomination. We respect your privacy and will not share your information beyond our Women in Microfluidics website.  And… if you know of stellar female colleagues in the microfluidics/bio-MEMS areas, please nominate them using the same website.
+
+If you have any questions or ideas, please let us know by replying to this email.
+
+Sincerely,
+Prof. Amy E. Herr on behalf of Microfluidics @ UC Berkeley

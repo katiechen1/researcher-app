@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- this is the format for when you click a researcher -->
+
+
+
+
 <div>
   <h3>{{ researcher.name|capfirst }}</h3>
   <p>Institution: {{ researcher.institution }}</p>
   <p>Position: {{ researcher.position }}</p>
-  <p>Country: {{ researcher.country }}</p>
-  <p>Website: {{ researcher.website_link }}</p>
-  <p>LinkedIn: {{ researcher.linkedin_link }}</p>
+  <p>Country:  {{ researcher.country }}</p>
+  <p>Website: 
+  	<a href="{{ researcher.website_link }}">
+  		{{ researcher.website_link }} 
+  		</a>
+  	</p> 
+  <p>LinkedIn: 
+  	<a href="{{ researcher.linkedin_link}}">
+  		{{ researcher.linkedin_link }}
+  		</a>
+  	</p>
   <p>Level: {{ researcher.level }}</p>
   <p>Description: {{ researcher.des}}</p>
 </div>
+
+
 {% endblock %}

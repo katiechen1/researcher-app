@@ -5,11 +5,13 @@ from django.views.generic import View
 from django.conf import settings
 
 
+
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
 from django.template import Context
-from django.template.loader import get_template
-from django.core.mail import send_mail
+
+from django.template.loader import get_template, render_to_string
+from django.core.mail import send_mail, EmailMultiAlternatives
 
 from .models import Researcher 
 from .models import NominateForm
@@ -56,12 +58,24 @@ def nominate(request):
             nominees_website = request.POST.get('nominees_website', '')
             nominees_institution = request.POST.get('nominees_institution', '')
 
-            
-            subject = 'Nomination for Website'
+            # plaintext = get_template("temp1.txt")
+            # html_temp = get_template("temp1.html")
+            d = { 'nominee_name': nominees_name, 'nominator': nominators_name }
+
+            subject = 'Women in Microfluidics: Accept your nomination to our grassroots list'
             from_email = settings.EMAIL_HOST_USER
             to_email = [str(nominees_email)]
-            msg = 'Hello ' + nominees_name + ',\n \n You have been nominated by ' + nominators_name + ' to be listed on our website. Please go to microfluidics.berkeley.edu/nomineeinfo to register an account and update your information. Thanks. \n \n Sincerely, \n Team from Microfluidics @ Berkeley'
-            send_mail(subject=subject, message=msg, from_email=from_email, recipient_list=to_email, fail_silently=True)
+            text_content = render_to_string("temp1.txt", d)
+            html_content = render_to_string("temp1.html", d)
+
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+
+
+
+            # msg = 'Hello ' + nominees_name + ',\n \n You have been nominated by ' + nominators_name + ' to be listed on our website. Please go to microfluidics.berkeley.edu/nomineeinfo to register an account and update your information. Thanks. \n \n Sincerely, \n Team from Microfluidics @ Berkeley'
+            # send_mail(subject=subject, message=msg, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
             return redirect('/thanks')
 
