@@ -2,15 +2,21 @@
 {% load static %}
 
 {% block content %}
+
+<div class="post-preview">
+  <p class="post-meta">
+  This list was originally assembled by Amy E. Herr (UC Berkeley) and is continually updated – via nominations – to aid conference chairs and organizers in identifying speakers, panelists, and moderators for inclusion in conferences and workshops having micro/nanofluidics and Bio-MEMS content. To nominate yourself or a colleague, please visit our ‘Nominate’ page.</p>
+</div>
+
 <div>
   {% for r in researcher %}
     <div class="researcher">
       <a href="{% url 'researcher_detail' r.id %}">
-        <h3>{{ r.name|capfirst }}</h3>
-      </a>
-      <p>{{ r.institution }}</p>
-      
-      <p class="hidden">{{ r.level }}</p>
+        <h5>{{ r.name|capfirst }} </h5> 
+     </a>
+       <p>{{ r.institution }}, {{ r.position|capfirst }}, {{ r.country|capfirst }}, {{ r.website_link|capfirst }}, {{ r.linkedin_link|capfirst }}, {{ r.level|capfirst }}, {{ r.des|capfirst }}
+       </p> 
+ 
     </div>
   {% endfor %}
 </div>

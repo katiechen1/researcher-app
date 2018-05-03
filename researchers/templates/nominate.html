@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Nominate - {
+{% block title %} Nominate{
 
 { block.super }}
 
@@ -8,12 +8,16 @@
 
 {% block content %}
 
-<h1>Your information as a Nominator</h1>
-<h3>Self-nominations accepted </h3>
-<p>Please complete the following information regarding the individual you are nominating. We are seeking research-focused nominees, including established industry professionals and Academics (Assistant, Associate, through Full Professor rank). The Nominee will be contacted subsequent to your submission, to confirm their acceptance of the nomination.</p>
+<h2>Nominate Yourself or Someone Else</h2>
+
+<p>Please complete the nomination form below. We are seeking research-focused nominees, including established industry professionals and Academics (Assistant, Associate, Full Professor, to Emerita rank). Please note: Each Nominee will be contacted after nomination via automated email to confirm nomination acceptance and inclusion on our Women in Microfluidics list. Each Nominee will be sent the name of their Nominator.</p>
 <form role="form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <!-- <label for="id_nominators_Full_name">Nominator's full name:</label> 
+ -->
     <button type="submit">Submit</button>
 </form>
 {% endblock %}
+
+

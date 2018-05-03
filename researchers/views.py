@@ -49,18 +49,18 @@ def nominate(request):
         form = form_class(data=request.POST)
 
         if form.is_valid():
-            contact_name = request.POST.get('contact_name', '')
-            contact_email = request.POST.get('contact_email', '')
-            nominee_name = request.POST.get('nominee_name', '')
-            nominee_email = request.POST.get('nominee_email', '')
-            nominee_website = request.POST.get('nominee_website', '')
-            nominee_institution = request.POST.get('nominee_institution', '')
+            nominators_name = request.POST.get('nominators_full_name', '')
+            nominators_email = request.POST.get('nominators_email', '')
+            nominees_name = request.POST.get('nominees_name', '')
+            nominees_email = request.POST.get('nominees_email', '')
+            nominees_website = request.POST.get('nominees_website', '')
+            nominees_institution = request.POST.get('nominees_institution', '')
 
             
             subject = 'Nomination for Website'
             from_email = settings.EMAIL_HOST_USER
-            to_email = [str(nominee_email)]
-            msg = 'Hello, you have been nominated to be listed on our website. Please go to localhost:8000/nomineeinfo to register an account and update your information. Thanks.'
+            to_email = [str(nominees_email)]
+            msg = 'Hello ' + nominees_name + ',\n \n You have been nominated by ' + nominators_name + ' to be listed on our website. Please go to microfluidics.berkeley.edu/nomineeinfo to register an account and update your information. Thanks. \n \n Sincerely, \n Team from Microfluidics @ Berkeley'
             send_mail(subject=subject, message=msg, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
             return redirect('/thanks')

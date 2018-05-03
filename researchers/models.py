@@ -21,12 +21,12 @@ class Researcher(models.Model):
 
 # This is the form used to nominate a scholar or yourself
 class NominateForm(forms.Form):
-    contact_name = forms.CharField(required=True)
-    contact_email = forms.EmailField(required=True)
-    nominee_name = forms.CharField(required=True)
-    nominee_email = forms.EmailField(required=True)
-    nominee_website = forms.CharField(required=True)
-    nominee_institution = forms.CharField(required=True)
+    nominators_full_name = forms.CharField(required=True)
+    nominators_email = forms.EmailField(required=True)
+    nominees_name = forms.CharField(required=True)
+    nominees_email = forms.EmailField(required=True)
+    nominees_website = forms.CharField(required=True)
+    nominees_institution = forms.CharField(required=True)
 
 
 # This is the form we send to nominated individual to get information needed to display

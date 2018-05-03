@@ -126,6 +126,6 @@ STATICFILES_DIRS = [
 #linking email stuff
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'your_email_here@test.com'
-EMAIL_HOST_PASSWORD = 'your_pword'
+EMAIL_HOST_USER = 'microfluidics.berkeley@gmail.com'
+EMAIL_HOST_PASSWORD = 'microfluidics123'
 EMAIL_PORT = 587
