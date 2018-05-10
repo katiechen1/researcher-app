@@ -27,11 +27,32 @@ class NominateForm(forms.Form):
     nominees_name = forms.CharField(required=True)
     nominees_email = forms.EmailField(required=True)
 
-# class NewForm(ModelForm):
+# # This is the form used to nominvi modeate a scholar or yourself
+# class NominateForm(ModelForm):
+#     nominators_full_name = forms.CharField(required=True)
+#     nominators_email = forms.EmailField(required=True)
+#     nominees_name = forms.CharField(required=True)
+#     nominees_email = forms.EmailField(required=True)
 #     class Meta:
-#             model = NominateForm
-#             fields = ['nname', 'nemail', 'nomineesname', 'nomineesemail']
-#             labels = {'nname': 'Nominator\'s Full Name', 'nemail': 'NOminator\'s Email', 'nomineesname': 'Nominee\'s Name', 'nominees_email': 'Nominee\'s Email' }
+#         model = Researcher
+#         fields = ('name', 'email')
+#         labels = {
+#             'HELLO': 'nominators_full_name', 'BYE': 'name'
+#         }
+
+# # This is the form we send to nominated individual to get information needed to display
+# class NominatedInfo(forms.Form):
+#     LEVELS_CHOICES = [('AP', 'Assistant Professor'), ('AsCP', 'Associate Professor'), ('FP', 'Full Professor'), ('SIS', 'Senior Industry Scientist')]
+#     name = forms.CharField(required=True)
+#     email = forms.CharField(required=True)
+#     institution = forms.CharField(required=True)
+#     position = forms.CharField(required=True)
+#     website = forms.CharField(required=True)
+#     linkedin = forms.CharField(required=True)
+#     level = forms.ChoiceField(choices=LEVELS_CHOICES, required=True)
+#     description = forms.CharField(required=True,
+#         widget=forms.Textarea, max_length=100)
+
 
 # This is the form we send to nominated individual to get information needed to display
 class NominatedInfo(forms.Form):
@@ -40,15 +61,13 @@ class NominatedInfo(forms.Form):
     email = forms.CharField(required=True)
     institution = forms.CharField(required=True)
     position = forms.CharField(required=True)
-
-    # country = models.CharField(required=True)
     website = forms.CharField(required=True)
     linkedin = forms.CharField(required=True)
     level = forms.ChoiceField(choices=LEVELS_CHOICES, required=True)
     description = forms.CharField(required=True,
-        widget=forms.Textarea, max_length=100)
-    # level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
-
+        widget=forms.Textarea(attrs={'cols': 40, 'rows': 5}), max_length=100)
+    class Meta:
+        model = Researcher
 
 
 

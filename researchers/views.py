@@ -49,7 +49,7 @@ def researcher_detail(request, id):
 
 def nominate(request):
     form_class = NominateForm
-    # form_class = NewForm
+
     if request.method == 'POST':
         form = form_class(data=request.POST)
 
