@@ -54,12 +54,13 @@ def nominate(request):
         form = form_class(data=request.POST)
 
         if form.is_valid():
+            print('insidevalid')
             nominators_name = request.POST.get('nominators_full_name', '')
             nominators_email = request.POST.get('nominators_email', '')
             nominees_name = request.POST.get('nominees_name', '')
             nominees_email = request.POST.get('nominees_email', '')
-            nominees_website = request.POST.get('nominees_website', '')
-            nominees_institution = request.POST.get('nominees_institution', '')
+            # nominees_website = request.POST.get('nominees_website', '')
+            # nominees_institution = request.POST.get('nominees_institution', '')
 
             # plaintext = get_template("temp1.txt")
             # html_temp = get_template("temp1.html")

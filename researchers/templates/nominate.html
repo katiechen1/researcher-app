@@ -13,10 +13,11 @@
 <p>Please complete the nomination form below. We are seeking research-focused nominees, including established industry professionals and Academics (Assistant, Associate, Full Professor, to Emerita rank). Please note: Each Nominee will be contacted after nomination via automated email to confirm nomination acceptance and inclusion on our Women in Microfluidics list. Each Nominee will be sent the name of their Nominator.</p>
 <form role="form" action="" method="post">
     {% csrf_token %}
+    <!-- {{ form.as_p }} -->
     <table cellspacing="0">
                 <tr>
                     <td><label for="nominators_full_name">Nominator's Full Name:</label></td>
-                    <td><input type="text" id="nominators_full_name"></td>
+                    <td><input type="text" id="nominators_full_name" name="nominators_full_name"></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -26,9 +27,9 @@
               <tr class="spacer"><td></td></tr>
                 <tr>
                     <td><label for="nominators_email">Nominator's Email:</label></td>
-                    <td><input type="text" id="nominators_email"></td>
+                    <td><input type="text" id="nominators_email" name="nominators_email"></td>
                 </tr>
-                <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -37,9 +38,9 @@
                
                 <tr>
                     <td><label for="nominees_name">Nominee's Name:</label></td>
-                    <td><input type="text" id="nominees_name"></td>
+                    <td><input type="text" id="nominees_name" name="nominees_name"></td>
                 </tr>
-                <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -47,9 +48,9 @@
               <tr class="spacer"><td></td></tr>
                 <tr>
                     <td><label for="nominees_email">Nominee's Email:</label></td>
-                    <td><input type="text" id="nominees_email"></td>
+                    <td><input type="text" id="nominees_email" name="nominees_email"></td>
                 </tr>
-                <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -60,5 +61,4 @@
     <button type="submit">Submit</button>
 </form>
 {% endblock %}
-
 
