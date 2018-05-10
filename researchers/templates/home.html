@@ -12,10 +12,10 @@
 <div>
   {% for r in researcher %}
     <div class="researcher">
-      <a href="{% url 'researcher_detail' r.id %}">
+      
         <h5>{{ r.name|capfirst }} </h5> 
-     </a>
-       <p>{{ r.institution }}, {{ r.position|capfirst }}, {{ r.country|capfirst }}, {{ r.website_link|capfirst }}, {{ r.linkedin_link|capfirst }}, {{ r.level|capfirst }}, {{ r.des|capfirst }}
+     
+       <p>{{ r.institution }}, {{ r.position|capfirst }}, {{ r.country|capfirst }}, <a href="{{ r.website_link }}"> {{ r.website_link }} </a>, <a href="{{ r.linkedin_link}}"> {{ r.linkedin_link }} </a>, {{ r.level|capfirst }}, {{ r.des|capfirst }}
        </p> 
  
     </div>

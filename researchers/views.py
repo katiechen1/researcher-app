@@ -18,6 +18,8 @@ from .models import NominateForm
 from .models import NominatedInfo
 from .forms import UserForm 
 
+# from .models import NewForm
+
 # from .models import Nominee
 # from .models import Nomination 
 
@@ -47,6 +49,7 @@ def researcher_detail(request, id):
 
 def nominate(request):
     form_class = NominateForm
+    # form_class = NewForm
     if request.method == 'POST':
         form = form_class(data=request.POST)
 

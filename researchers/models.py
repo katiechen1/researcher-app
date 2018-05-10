@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User 
 from django.utils import timezone
+from django.forms import ModelForm
 # Create your models here.
 
 
@@ -19,19 +20,22 @@ class Researcher(models.Model):
     level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
     des = models.CharField(max_length=200)
 
-# This is the form used to nominate a scholar or yourself
+# This is the form used to nominvi modeate a scholar or yourself
 class NominateForm(forms.Form):
     nominators_full_name = forms.CharField(required=True)
     nominators_email = forms.EmailField(required=True)
     nominees_name = forms.CharField(required=True)
     nominees_email = forms.EmailField(required=True)
-    nominees_website = forms.CharField(required=True)
-    nominees_institution = forms.CharField(required=True)
 
+# class NewForm(ModelForm):
+#     class Meta:
+#             model = NominateForm
+#             fields = ['nname', 'nemail', 'nomineesname', 'nomineesemail']
+#             labels = {'nname': 'Nominator\'s Full Name', 'nemail': 'NOminator\'s Email', 'nomineesname': 'Nominee\'s Name', 'nominees_email': 'Nominee\'s Email' }
 
 # This is the form we send to nominated individual to get information needed to display
 class NominatedInfo(forms.Form):
-    # LEVELS_CHOICES = [('EC', 'Early Career'), ('MS', 'Mid/Senior Career')]
+    LEVELS_CHOICES = [('AP', 'Assistant Professor'), ('AsCP', 'Associate Professor'), ('FP', 'Full Professor'), ('SIS', 'Senior Industry Scientist')]
     name = forms.CharField(required=True)
     email = forms.CharField(required=True)
     institution = forms.CharField(required=True)
@@ -40,9 +44,9 @@ class NominatedInfo(forms.Form):
     # country = models.CharField(required=True)
     website = forms.CharField(required=True)
     linkedin = forms.CharField(required=True)
-    level = forms.CharField(required=True, max_length=2)
+    level = forms.ChoiceField(choices=LEVELS_CHOICES, required=True)
     description = forms.CharField(required=True,
-        widget=forms.Textarea)
+        widget=forms.Textarea, max_length=100)
     # level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
 
 
