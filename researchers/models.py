@@ -9,7 +9,7 @@ from django.forms import ModelForm
 
 #Researcher objects for each researcher on the page 
 class Researcher(models.Model):
-    LEVELS_CHOICES = [('EC', 'Early Career'), ('MS', 'Mid/Senior Career')]
+    LEVELS_CHOICES = [('AP', 'Assistant Professor'), ('AsCP', 'Associate Professor'), ('FP', 'Full Professor'), ('SIS', 'Senior Industry Scientist')]
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     institution = models.CharField(max_length=200)
@@ -17,7 +17,7 @@ class Researcher(models.Model):
     country = models.CharField(max_length=200)
     website_link = models.CharField(max_length=200)
     linkedin_link = models.CharField(max_length=200)
-    level = models.CharField(choices=LEVELS_CHOICES, max_length=200, blank=True)
+    level = models.CharField(choices=LEVELS_CHOICES, blank=True, max_length=200)
     des = models.CharField(max_length=200)
 
 # This is the form used to nominvi modeate a scholar or yourself
