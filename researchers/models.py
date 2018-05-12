@@ -9,7 +9,7 @@ from django.forms import ModelForm
 
 #Researcher objects for each researcher on the page 
 class Researcher(models.Model):
-    LEVELS_CHOICES = [('AP', 'Assistant Professor'), ('AsCP', 'Associate Professor'), ('FP', 'Full Professor'), ('SIS', 'Senior Industry Scientist')]
+    LEVELS_CHOICES = [('Assistant Professor', 'Assistant Professor'), ('Associate Professor', 'Associate Professor'), ('Full Professor', 'Full Professor'), ('Senior Industry Scientist', 'Senior Industry Scientist')]
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     institution = models.CharField(max_length=200)
