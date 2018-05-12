@@ -56,7 +56,7 @@ class NominateForm(forms.Form):
 
 # This is the form we send to nominated individual to get information needed to display
 class NominatedInfo(forms.Form):
-    LEVELS_CHOICES = [('AP', 'Assistant Professor'), ('AsCP', 'Associate Professor'), ('FP', 'Full Professor'), ('SIS', 'Senior Industry Scientist')]
+    LEVELS_CHOICES = [('Assistant Professor', 'Assistant Professor'), ('Associate Professor', 'Associate Professor'), ('Full Professor', 'Full Professor'), ('Senior Industry Scientist', 'Senior Industry Scientist')]
     name = forms.CharField(required=True)
     email = forms.CharField(required=True)
     institution = forms.CharField(required=True)
