@@ -100,7 +100,7 @@ def nominee_info(request):
             new_nominee.email = request.POST.get('your_email', '')
             new_nominee.institution = request.POST.get('institution', '')
             new_nominee.position = request.POST.get('position', '')
-            
+            new_nominee.country = request.POST.get('country', '')
             new_nominee.website_link = request.POST.get('website', '')
             new_nominee.linkedin_link = request.POST.get('linkedin', '')
             new_nominee.level = request.POST.get('level', '')
@@ -114,7 +114,7 @@ def nominee_info(request):
     })
 
 
-#creates new authenticated user 
+# #creates new authenticated user 
 def register_user(request):
     form_class = UserForm
     template_name = 'nomineeinfo.html'
