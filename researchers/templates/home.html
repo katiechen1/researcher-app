@@ -15,9 +15,9 @@
   {% for r in researcher %}
     <div class="researcher">
       
-        <h5>{{ r.name|capfirst }} </h5> 
+        <h5>{{ r.name|title }} </h5> 
      
-       <p>{{ r.institution }}, {{ r.position|capfirst }}, {{ r.country|capfirst }}, <a href="http://{{ r.website_link }}"> Website</a>, <a href="http://{{ r.linkedin_link }}"> LinkedIn</a>, {{ r.level|capfirst }}, {{ r.des|capfirst }}
+       <p>{{ r.level }}, {{ r.position|title }}, {{ r.institution }}, {{ r.country|capfirst }}, <a href="http://{{ r.website_link }}"> Website</a>, <a href="http://{{ r.linkedin_link }}"> LinkedIn</a>, <i>{{ r.des|capfirst }}</i>
        </p> 
  
     </div>

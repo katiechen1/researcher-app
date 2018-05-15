@@ -3,6 +3,9 @@ from django import forms
 from django.contrib.auth.models import User 
 from django.utils import timezone
 from django.forms import ModelForm
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
 # Create your models here.
 
 
@@ -58,7 +61,7 @@ class NominateForm(forms.Form):
 class NominatedInfo(forms.Form):
     LEVELS_CHOICES = [('Assistant Professor', 'Assistant Professor'), ('Associate Professor', 'Associate Professor'), ('Full Professor', 'Full Professor'), ('Senior Industry Scientist', 'Senior Industry Scientist')]
     name = forms.CharField(required=True)
-    email = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
     institution = forms.CharField(required=True)
     position = forms.CharField(required=True)
     website = forms.CharField(required=True)
@@ -70,6 +73,13 @@ class NominatedInfo(forms.Form):
     class Meta:
         model = Researcher
 
+# #checking that keyword is at least five words
+# def mfive(value):
+#     if len(value) < 5:
+#         raise ValidationError(
+#             _('%(value)s is not at least five words'),
+#             params={'value': value},
+#         )
 
 
 # one nominator can nominate many researchers

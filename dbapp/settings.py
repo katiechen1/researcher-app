@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$oid#6bi+zj^w1+i1=zqz#gt&ds^&yg*9vjnttx&3llv^4dv-_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'microfluidics.berkeley.edu']
 

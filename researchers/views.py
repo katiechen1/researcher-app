@@ -33,6 +33,15 @@ def about(request):
 def thanks(request):
     return render(request, 'thanks.html')
 
+def nomthanks(request):
+    return render(request, 'nomthanks.html')
+
+def badinfo(request):
+    return render(request, 'badinfo.html')
+
+def nombadinfo(request):
+    return render(request, 'nombadinfo.html')
+
 def researcher_detail(request, id):
 
     try:
@@ -76,13 +85,9 @@ def nominate(request):
             msg.attach_alternative(html_content, "text/html")
             msg.send()
 
-
-
-            # msg = 'Hello ' + nominees_name + ',\n \n You have been nominated by ' + nominators_name + ' to be listed on our website. Please go to microfluidics.berkeley.edu/nomineeinfo to register an account and update your information. Thanks. \n \n Sincerely, \n Team from Microfluidics @ Berkeley'
-            # send_mail(subject=subject, message=msg, from_email=from_email, recipient_list=to_email, fail_silently=True)
-
             return redirect('/thanks')
-
+        else:
+            return redirect('/badinfo')
     return render(request, 'nominate.html', {
         'form': form_class,
     })
@@ -106,50 +111,50 @@ def nominee_info(request):
             new_nominee.level = request.POST.get('level', '')
             new_nominee.des = request.POST.get('description', '')
             new_nominee.save()
-
-            return redirect('/thanks')
-
+            return redirect('/nomthanks')
+        # else:
+        #     return redirect('/nombadinfo')
     return render(request, 'nomineeinfo.html', {
         'form': form_class,
     })
 
 
-# #creates new authenticated user 
-def register_user(request):
-    form_class = UserForm
-    template_name = 'nomineeinfo.html'
-    # new_nomination = Nomination
+# # #creates new authenticated user 
+# def register_user(request):
+#     form_class = UserForm
+#     template_name = 'nomineeinfo.html'
+#     # new_nomination = Nomination
 
-    #creating a User 
-    if request.method == 'POST':
-        form = form_class(data=request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+#     #creating a User 
+#     if request.method == 'POST':
+#         form = form_class(data=request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
     
-            user.set_password(password)
-            user.save()
+#             user.set_password(password)
+#             user.save()
 
-            user = authenticate(username=username, password=password)
+#             user = authenticate(username=username, password=password)
 
-            if user is not None:
-                #user authenticated here, create new nomination object
-                if user.is_active:
-                    login(request, user)
+#             if user is not None:
+#                 #user authenticated here, create new nomination object
+#                 if user.is_active:
+#                     login(request, user)
 
-                    #this should show the form for nominee to fill out
-                    return redirect('/thanks')
-        else:
-            return render(request, 'register.html', {
-        'form': form_class, })
-        return redirect('/')
+#                     #this should show the form for nominee to fill out
+#                     return redirect('/thanks')
+#         else:
+#             return render(request, 'register.html', {
+#         'form': form_class, })
+#         return redirect('/')
 
-    #display empty form
-    elif request.method == 'GET':
-        return render(request, 'register.html', {
-        'form': form_class, })
-    return redirect('/')
+#     #display empty form
+#     elif request.method == 'GET':
+#         return render(request, 'register.html', {
+#         'form': form_class, })
+#     return redirect('/')
 
 
 
