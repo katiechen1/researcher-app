@@ -25,10 +25,10 @@ urlpatterns = [
     url(r'researchers/(\d+)/', views.researcher_detail, name='researcher_detail'),
     url(r'^nominate/$', views.nominate, name='nominate'),
     url(r'^nomineeinfo/$', views.nominee_info, name='nominee_info'),
-    # url(r'register/$', views.register_user, name='register_user'),
     url(r'about/$', views.about, name='about'),
     url(r'thanks/$', views.thanks, name='thanks'),
     url(r'badinfo/$', views.badinfo, name='badinfo'),
-    url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'),
-    url(r'nomthanks/$', views.nomthanks, name='nomthanks'),
+
+    # url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'),
+    url(r'success/$', views.success, name='success'),
     ]
