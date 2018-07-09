@@ -39,8 +39,8 @@ def nomthanks(request):
 def badinfo(request):
     return render(request, 'badinfo.html')
 
-def success(request):
-    return render(request, 'success.html')
+def nombadinfo(request):
+    return render(request, 'nombadinfo.html')
 
 def researcher_detail(request, id):
 
@@ -63,12 +63,16 @@ def nominate(request):
         form = form_class(data=request.POST)
 
         if form.is_valid():
-            
+            print('insidevalid')
             nominators_name = request.POST.get('nominators_full_name', '')
             nominators_email = request.POST.get('nominators_email', '')
             nominees_name = request.POST.get('nominees_name', '')
             nominees_email = request.POST.get('nominees_email', '')
-            
+            # nominees_website = request.POST.get('nominees_website', '')
+            # nominees_institution = request.POST.get('nominees_institution', '')
+
+            # plaintext = get_template("temp1.txt")
+            # html_temp = get_template("temp1.html")
             d = { 'nominee_name': nominees_name, 'nominator': nominators_name }
 
             subject = 'Women in Microfluidics: Accept your nomination to our grassroots list'
@@ -97,9 +101,7 @@ def nominee_info(request):
         form = form_class(data=request.POST)
 
         if form.is_valid():
-
             new_nominee.name = request.POST.get('name', '')
-            ###
             new_nominee.email = request.POST.get('your_email', '')
             new_nominee.institution = request.POST.get('institution', '')
             new_nominee.position = request.POST.get('position', '')
@@ -109,9 +111,9 @@ def nominee_info(request):
             new_nominee.level = request.POST.get('level', '')
             new_nominee.des = request.POST.get('description', '')
             new_nominee.save()
-            return redirect('/success')
-        else:
-            return redirect('/badinfo')
+            return redirect('/nomthanks')
+        # else:
+        #     return redirect('/nombadinfo')
     return render(request, 'nomineeinfo.html', {
         'form': form_class,
     })
