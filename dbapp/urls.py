@@ -27,8 +27,9 @@ urlpatterns = [
     url(r'^nomineeinfo/$', views.nominee_info, name='nominee_info'),
     # url(r'register/$', views.register_user, name='register_user'),
     url(r'about/$', views.about, name='about'),
+    url(r'nomthanks/$', views.nomthanks, name='nomthanks'),
+    url(r'feedback_thanks/$', views.feedback_thanks, name = 'feedback_thanks'),
     url(r'thanks/$', views.thanks, name='thanks'),
     url(r'badinfo/$', views.badinfo, name='badinfo'),
-    url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'),
-    url(r'nomthanks/$', views.nomthanks, name='nomthanks'),
-    ]
+    url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'), 
+    url(r'feedback/$', views.feedback, name='feedback'),        ]

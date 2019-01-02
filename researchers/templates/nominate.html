@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Nominate{
 
-{ block.super }}
-
-<header class="masthead" style="background-image: url(https://www.ocf.berkeley.edu/~microfluidics/static/img/home-bg.jpg)">
-</header>
-
+{% block header_styles %}
+  <style>
+    header.masthead {
+      background-image: url({% static 'img/nominate-bg.jpg' %});
+    }
+  </style>
 {% endblock %}
-
 
 {% block content %}
 
@@ -20,8 +19,14 @@
     {% csrf_token %}
     <!-- {{ form.as_p }} -->
     <table cellspacing="0">
-                <tr>
-                    <td><label for="nominators_full_name">Nominator's Full Name:</label></td>
+                
+	   
+
+	    <tr>
+		    <td><label for="Nominator"><b>Nominator</b></label></td>
+	    </tr>	                    
+	      <tr>
+	      	<td><label for="nominators_full_name">Name:</label></td>
                     <td><input type="text" id="nominators_full_name" name="nominators_full_name"></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
@@ -31,7 +36,7 @@
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
                 <tr>
-                    <td><label for="nominators_email">Nominator's Email:</label></td>
+                    <td><label for="nominators_email">Email:</label></td>
                     <td><input type="text" id="nominators_email" name="nominators_email"></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
@@ -40,9 +45,31 @@
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
-               
-                <tr>
-                    <td><label for="nominees_name">Nominee's Name:</label></td>
+	      <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+	      <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+	      <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+	      <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+               <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+	      <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              
+	      <tr>
+
+		    <td><label for="Nominee"><b>Nominee</b></label></td>
+		</tr>		    
+	      <tr>
+	      	    <td><label for="nominees_name">Name:</label></td>
                     <td><input type="text" id="nominees_name" name="nominees_name"></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
@@ -52,7 +79,7 @@
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
                 <tr>
-                    <td><label for="nominees_email">Nominee's Email:</label></td>
+                    <td><label for="nominees_email">Email:</label></td>
                     <td><input type="text" id="nominees_email" name="nominees_email"></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
@@ -63,6 +90,9 @@
               <tr class="spacer"><td></td></tr>
                 
             </table>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<div class="g-recaptcha" data-sitekey="6LfA3n4UAAAAADCPo2-R6MnO4NgnCX1aSkFSDXPO"></div>
+
     <button type="submit">Submit</button>
 </form>
 {% endblock %}

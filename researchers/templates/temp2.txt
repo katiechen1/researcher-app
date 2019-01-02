@@ -1,0 +1,6 @@
+Dear {{ nominator }},
+
+Thank you for nominating {{ nominee_name }} for our Women in Microfluidics list (microfluidics.berkeley.edu). If you would like to make another submission, please go to microfluidics.berkeley.edu/nominate. If you would like to provide feedback on the nomination process, please fill out the form at microfluidics.berkeley.edu/feedback.
+
+Thank you for your contributions to our field & for supporting this effort!
+Prof. Amy E. Herr on behalf of Microfluidics @ UC Berkeley

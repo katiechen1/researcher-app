@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Feedback Form</h1>
+
+<br>
+ <p1 align="justify">
+  
+  <p>Please complete the anonmyous feedback form below.
+
+
+  <form role="form" action="" method="post">
+	      {% csrf_token %}
+	          
+	          {{ form.as_p }}
+		      <button type="submit" onclick="dataValidate()">Submit</button>
+  </form>
+  {% endblock %}

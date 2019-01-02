@@ -22,10 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$oid#6bi+zj^w1+i1=zqz#gt&ds^&yg*9vjnttx&3llv^4dv-_'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Google Captcha Secret Key
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LfA3n4UAAAAAGCtrAoxTktxKJP5K_sNZFVCuWje'
 
-ALLOWED_HOSTS = ['localhost', 'microfluidics.berkeley.edu']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+ALLOWED_HOSTS = ['localhost', 'microfluidics.berkeley.edu', 'microfluidics-berkeley-edu.dev-apphost.ocf.berkeley.edu']
 
 
 # Application definition
@@ -128,5 +130,5 @@ STATICFILES_DIRS = [
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'microfluidics.berkeley@gmail.com'
-EMAIL_HOST_PASSWORD = 'ucberkeley2018'
+EMAIL_HOST_PASSWORD = 'GoBears2018!'
 EMAIL_PORT = 587

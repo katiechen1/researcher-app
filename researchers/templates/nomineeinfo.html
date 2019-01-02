@@ -1,25 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h1>Accept your nomination</h1>
+<!--
+<script>
+window.onload = function() {
+	var inputs = ["name","email","institution","position","website","linkedin","country"];
+	var arrayLength = inputs.length;
+	for (var i = 0; i < arrayLength; i++) {
+	    	name = inputs[i];
+	   	 var oneInput = document.getElementById(name);
+	    	oneInput.addEventListener("input",function (event) {
+			if (oneInput.validity.typeMismatch) {
+				if (name == "email"){
+					oneInput.setCustomValidity("Please input a valid email");
+				}
+				else if (name == "website" || name == "linkedin"){
+					oneInput.setCustomValidity("Please ensure this link is correct");
+				}
+				else{
+					oneInput.setCustomValidity("Please fill the required field");
+				}
+			} else {
+				oneInput.setCustomValidity("");
+			}
+	   	 });
+	}
+}
+</script>
+-->
 
 <br>
  <p1 align="justify">
  
- <p><b>Congratulations!</b> You have been nominated for inclusion in the <i>Women in Microfluidics</i> list. We focus on independent researchers in the micro/nanofluidics and Bio-MEMS areas. To accept and be included on the <i>Women in Microfluidics</i> list, simply submit the form below. Before submitting, please double check that the information entered is as you would like it to appear. Beyond displaying your information on our website, we will not share your information further.</p>
- <p2><b>A caution on data entry</b> (you are using an early version of the List, with limited error catching):
- <br>
- <ul>
-	 <li>Keywords description: Use a maximum of 5 words (total) with commas as delimiters.</li>
-	 <li>LinkedIn and Website links: Omit 'www.' and 'http://' , using instead the simple format 'mywebsite.edu'. </li>
-	 <li>If, after clicking ‘submit’, you are not redirected to a final confirmation page, <b>check and correct the format</b> of your email and website entries.
-
-
+ <p><b>Congratulations!</b> You have been nominated for inclusion in the <i>Women</i> <i>in</i> <i>Microfluidics</i> list. We focus on independent researchers in the micro/nanofluidics and Bio-MEMS areas. To accept and be included on the <i>Women</i> <i>in</i> <i>Microfluidics</i> list, simply submit the form below. Beyond displaying your information on our website, we will not share your information further.</p>
 <form role="form" action="" method="post">
     {% csrf_token %}
     
-    {{ form.as_p }}
+<p><label for="id_name">Name:</label> <input type="text" name="name" required="" id="id_name"></p>
+<p><label for="id_email">Email:</label> <input type="email" name="email" required="" id="id_email"></p>
+<p><label for="id_institution">Institution:</label> <input type="text" name="institution" required="" id="id_institution"></p>
+<p><label for="id_position">Position:</label> <input type="text" name="position" required="" id="id_position"></p>
+<p><label for="id_website">Website (optional):</label> <input type="text" name="website" id="id_website"></p>
+<p><label for="id_linkedin">LinkedIn:</label> <input type="text" name="linkedin" required="" id="id_linkedin"></p>
+<p><label for="id_country">Country:</label> <input type="text" name="country" required="" id="id_country"></p>
+<p><label for="id_level">Level:</label> <select name="level" id="id_level">
+	<option selected disabled hidden>Choose here</option>  
+	<option value="Assistant Professor">Assistant Professor</option>
+
+	    <option value="Associate Professor">Associate Professor</option>
+
+	      <option value="Full Professor">Full Professor</option>
+
+	        <option value="Senior Industry Scientist">Senior Industry Scientist</option>
+
+</select></p>
+<p><label for="id_description">Research interests (max. characters 200):</label> <textarea name="description" cols="40" maxlength="200" required="" rows="5" id="id_description"></textarea></p>
 <!--     <table cellspacing="0">
                 <tr>
                     <td><label for="name">Name:</label></td>
@@ -107,6 +143,12 @@
 	              <td><textarea rows="2" cols="25" placeholder="Max 5 words, separated by comma delimiters"></textarea></td>
 	           	</tr>
             </table> -->
-    <button type="submit" onclick="return confirm('Once you select ‘OK’ your information will be added to the list and you will not have another chance to edit. If you are not redirected to another confirmation page after clicking OK, you should check the format of your email and websites and resubmit the form.')">Submit</button>
+	
+	    <p> Before submitting, please double check that the information entered is as you would like it to appear.</p>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<div class="g-recaptcha" data-sitekey="6LfA3n4UAAAAADCPo2-R6MnO4NgnCX1aSkFSDXPO"></div>
+
+	    
+   	<button type="submit">Submit</button>
 </form>
 {% endblock %}

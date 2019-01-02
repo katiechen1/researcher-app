@@ -1,4 +1,4 @@
-#!/home/m/mi/microfluidics/researcher-app/venv/bin/python3.5
+#!/home/m/mi/microfluidics/researcher-app-stretch/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

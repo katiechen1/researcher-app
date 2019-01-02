@@ -1,0 +1,16 @@
+
+input:invalid {
+	  border: 2px solid black;
+	  display:block;
+  }
+
+  input:valid, select,textarea {
+	    border: 2px solid black;
+	    display:block;
+    
+
+    }
+
+    .g-recaptcha{
+    margin-bottom: 15px;
+    }

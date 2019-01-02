@@ -13,7 +13,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'custom.css' %}" rel="stylesheet">
 
+	
     <!-- Custom fonts for this template -->
     <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -45,15 +47,24 @@
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
+	    <li class = "nav-item">
+		<a class="nav-link" href="/feedback">Feedback</a>
+	    </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    
+{% block header_styles %}
+    <style>
+      header.masthead {
+        background-image: url({% static 'img/home-bg.jpg' %});
+      }
+    </style>
+{% endblock %}
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
+    <header class="masthead">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">

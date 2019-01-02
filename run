@@ -1,6 +1,6 @@
 #!/bin/bash -e
-. ~/researcher-app/venv/bin/activate
+. ~/researcher-app-stretch/venv/bin/activate
 cd "$(dirname "$0")"
-PYTHONPATH=~/researcher-app/src:$PYTHONPATH \
+PYTHONPATH=~/researcher-app-stretch/src:$PYTHONPATH \
     exec gunicorn -w 2 -b unix:/srv/apps/$(whoami)/$(whoami).sock \
     --log-file - dbapp.wsgi:application

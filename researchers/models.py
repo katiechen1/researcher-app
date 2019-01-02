@@ -21,13 +21,16 @@ class Researcher(models.Model):
     level = models.CharField(choices=LEVELS_CHOICES, blank=True, max_length=200)
     des = models.CharField(max_length=200)
 
+class FeedbackForm(forms.Form):
+    feedback = forms.CharField(required=True,
+        widget=forms.Textarea(attrs={'cols': 40, 'rows': 5}), max_length=200)
+
 # This is the form used to nominvi modeate a scholar or yourself
 class NominateForm(forms.Form):
     nominators_full_name = forms.CharField(required=True)
     nominators_email = forms.EmailField(required=True)
     nominees_name = forms.CharField(required=True)
     nominees_email = forms.EmailField(required=True)
-
 
 # This is the form we send to nominated individual to get information needed to display
 class NominatedInfo(forms.Form):
@@ -36,12 +39,12 @@ class NominatedInfo(forms.Form):
     email = forms.EmailField(required=True)
     institution = forms.CharField(required=True)
     position = forms.CharField(required=True)
-    website = forms.CharField(required=True)
+    website = forms.CharField(required=False)
     linkedin = forms.CharField(required=True)
     country = forms.CharField(required=True)
     level = forms.ChoiceField(choices=LEVELS_CHOICES, required=True)
     description = forms.CharField(required=True,
-        widget=forms.Textarea(attrs={'cols': 40, 'rows': 5}), max_length=100)
+        widget=forms.Textarea(attrs={'cols': 40, 'rows': 5}), max_length=200)
     class Meta:
         model = Researcher
 
