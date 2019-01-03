@@ -37,18 +37,18 @@ window.onload = function() {
 <form role="form" action="" method="post">
     {% csrf_token %}
     
-<p><label for="id_name">Name:</label> <input type="text" name="name" required="" id="id_name"></p>
-<p><label for="id_email">Email:</label> <input type="email" name="email" required="" id="id_email"></p>
-<p><label for="id_institution">Institution:</label> <input type="text" name="institution" required="" id="id_institution"></p>
-<p><label for="id_position">Position:</label> <input type="text" name="position" required="" id="id_position"></p>
-<p><label for="id_website">Website (optional):</label> <input type="text" name="website" placeholder="http://www.example.com" id="id_website"
+<p><label for="id_name">Name:</label> <input type="text" name="name" required="" id="id_name" size ="30"></p>
+<p><label for="id_email">Email:</label> <input type="email" name="email" required="" id="id_email" size ="30"></p>
+<p><label for="id_institution">Institution:</label> <input type="text" name="institution" required="" id="id_institution" size ="30"></p>
+<p><label for="id_position">Position:</label> <input type="text" name="position" required="" id="id_position" size ="30"></p>
+<p><label for="id_website">Website (optional):</label> <input type="text" name="website" size = "30" placeholder="http://www.example.com" id="id_website"
 											 required pattern="(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
 		                title="Please input a valid URL"></p>
-<p><label for="id_linkedin">LinkedIn URL:</label> <input type="text" name="linkedin" placeholder = "https://www.linkedin.com/in/your_id_here" required="" id="id_linkedin"			 
+<p><label for="id_linkedin">LinkedIn URL:</label> <input type="text" name="linkedin" size="30" placeholder = "https://www.linkedin.com/in/your_id_here" required="" id="id_linkedin"			 
 	required pattern="(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"
 		                title="Please input a valid URL"></p>
-<p><label for="id_country">Country:</label> <input type="text" name="country" required="" id="id_country"></p>
-<p><label for="id_level">Level:</label> <select name="level" id="id_level">
+<p><label for="id_country">Country:</label> <input type="text" name="country" size = "30" required="" id="id_country"></p>
+<p><label for="id_level">Level:</label> <select name="level" size  = "30" id="id_level">
 	<option selected disabled hidden>Choose here</option>  
 	<option value="Assistant Professor">Assistant Professor</option>
 
