@@ -27,7 +27,7 @@
 	    </tr>	                    
 	      <tr>
 	      	<td><label for="nominators_full_name">Name:</label></td>
-                    <td><input type="text" id="nominators_full_name" name="nominators_full_name"></td>
+                    <td><input type="text" id="nominators_full_name" name="nominators_full_name" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -37,7 +37,7 @@
               <tr class="spacer"><td></td></tr>
                 <tr>
                     <td><label for="nominators_email">Email:</label></td>
-                    <td><input type="text" id="nominators_email" name="nominators_email"></td>
+                    <td><input type="email" id="nominators_email" name="nominators_email" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -70,7 +70,7 @@
 		</tr>		    
 	      <tr>
 	      	    <td><label for="nominees_name">Name:</label></td>
-                    <td><input type="text" id="nominees_name" name="nominees_name"></td>
+                    <td><input type="text" id="nominees_name" name="nominees_name" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -80,7 +80,7 @@
               <tr class="spacer"><td></td></tr>
                 <tr>
                     <td><label for="nominees_email">Email:</label></td>
-                    <td><input type="text" id="nominees_email" name="nominees_email"></td>
+                    <td><input type="email" id="nominees_email" name="nominees_email" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -93,6 +93,41 @@
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<div class="g-recaptcha" data-sitekey="6LfA3n4UAAAAADCPo2-R6MnO4NgnCX1aSkFSDXPO"></div>
 
+	<script>
+
+	window.onload = function() {
+	    var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+	        if($recaptcha) {
+			        $recaptcha.setAttribute("required", "required");
+				    }
+
+	
+	};
+
+
+
+	// Doing error handling on form submit won't work here because the validation blocks the submit event from firing.
+
+//Get all the inputs...
+const inputs = document.querySelectorAll('input, select, textarea');
+
+// Loop through them...
+for(let input of inputs) {
+	  // Just before submit, the invalid event will fire, let's apply our class there.
+	  input.addEventListener('invalid', (event) => {
+		      input.classList.add('error');    
+		        }, false);
+	    
+	    // Optional: Check validity onblur
+	    input.addEventListener('blur', (event) => {
+		        input.checkValidity();
+			  })
+
+}
+
+
+	</script>
     <button type="submit">Submit</button>
 </form>
 {% endblock %}

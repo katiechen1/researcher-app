@@ -152,7 +152,39 @@ window.onload = function() {
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<div class="g-recaptcha" data-sitekey="6LfA3n4UAAAAADCPo2-R6MnO4NgnCX1aSkFSDXPO"></div>
 
+	<script>
+
+	window.onload = function() {
+	    var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+	        if($recaptcha) {
+			        $recaptcha.setAttribute("required", "required");
+				    }
+};
+
+// Doing error handling on form submit won't work here because the validation blocks the submit event from firing.
+
+//Get all the inputs...
+const inputs = document.querySelectorAll('input, select, textarea');
+
+// Loop through them...
+for(let input of inputs) {
+	  // Just before submit, the invalid event will fire, let's apply our class there.
+	  input.addEventListener('invalid', (event) => {
+		      input.classList.add('error');    
+		        }, false);
 	    
+	    // Optional: Check validity onblur
+	    input.addEventListener('blur', (event) => {
+		        input.checkValidity();
+			  })
+
+}
+
+
+
+
+	</script>
    	<button type="submit">Submit</button>
 </form>
 {% endblock %}
