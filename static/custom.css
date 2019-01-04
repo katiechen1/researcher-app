@@ -13,12 +13,22 @@ input:valid, input:invalid, select,textarea {
 	  input.error:valid,
 	  select.error:valid,
 	  textarea.error:valid {
-		      border-style: auto;
-		          border-color: inherit;
+		      border: 2px solid black;
 			    
 		  }
+.researcher{
+font-size:16px;
 
-				
+}
+
+.researcherwebname{
+color: #0919f3;
+text-decoration:none;
+}
+
+.linkedinwebname{
+text-decoration: none;
+}
     .g-recaptcha{
     margin-bottom: 15px;
     

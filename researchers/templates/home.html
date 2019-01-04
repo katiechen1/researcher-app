@@ -8,7 +8,9 @@
   </style>
 {% endblock %}
 {% block content %}
-
+<div style="
+	    font-size: 0px;
+	    ">
 <div class="post-preview">
   <p class="post-meta">
   Welcome! This list is an evolving (non-exhaustive) compendium of female industry and academic researchers. We aim to raise the profile of women leading research in micro/nanofluidics and Bio-MEMS. To nominate yourself or multiple colleagues, please visit our ‘Nominate’ page and share the Women in Microfluidics list with others, especially conference and workshop organizers and program committees (<a href="http://microfluidics.berkeley.edu">microfluidics.berkeley.edu</a>). Thank you! </p>
@@ -19,9 +21,7 @@
   {% for r in researcher %}
     <div class="researcher">
       
-        <h5>{{ r.name|title }} </h5> 
-     
-       <p>{{ r.level }}, {{ r.position|title }}, {{ r.institution }}, {{ r.country|capfirst }}, <a href="http://{{ r.website_link }}"> Website</a>, <a href="http://{{ r.linkedin_link }}"> LinkedIn</a>, <i>{{ r.des|capfirst }}</i>
+	    <p> <a class="researcherwebname" href="{{ r.website_link }}">{{ r.name|title }}</a> | <a class="linkedinwebname" href="{{ r.linkedin_link }}"> LinkedIn</a> | {{ r.institution }} | <i>{{ r.des|capfirst }}</i>
        </p> 
  
     </div>
