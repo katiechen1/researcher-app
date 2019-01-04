@@ -59,7 +59,13 @@ window.onload = function() {
 	        <option value="Senior Industry Scientist">Senior Industry Scientist</option>
 
 </select></p>
-<p><label for="id_description">Research interests (max. characters 200):</label> <textarea name="description" cols="40" maxlength="200" required="" rows="5" id="id_description"></textarea></p>
+<p style="
+    margin-bottom: 0px;
+    "><label for="id_description">Research interests (max. characters 200):</label> <textarea name="description" cols="40" maxlength="200" required="" rows="5" id="id_description"></textarea></p>
+<p style="
+    font-size: 15px;
+        margin-top: 0px;
+	" id="charpsan"><span id="chars">200</span> characters remaining</p>
 <!--     <table cellspacing="0">
                 <tr>
                     <td><label for="name">Name:</label></td>
@@ -187,4 +193,5 @@ for(let input of inputs) {
 	</script>
    	<button type="submit">Submit</button>
 </form>
+<script src='https://www.ocf.berkeley.edu/~microfluidics/static/js/char-count.js'></script>
 {% endblock %}
