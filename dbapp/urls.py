@@ -32,4 +32,6 @@ urlpatterns = [
     url(r'thanks/$', views.thanks, name='thanks'),
     url(r'badinfo/$', views.badinfo, name='badinfo'),
     url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'), 
-    url(r'feedback/$', views.feedback, name='feedback'),        ]
+    url(r'feedback/$', views.feedback, name='feedback'),
+    url(r'sitemap/$', views.sitemap name='sitemap'),  
+    ]
