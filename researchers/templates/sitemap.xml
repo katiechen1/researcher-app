@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://microfluidics.berkeley.edu/</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/nominate/</loc>
+  <lastmod>2019-01-06T23:32:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/about/</loc>
+  <lastmod>2019-01-06T23:32:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/feedback/</loc>
+  <lastmod>2019-01-06T23:32:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/nomineeinfo/</loc>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/nomthanks</loc>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/feedback_thanks</loc>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/thanks</loc>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/badinfo</loc>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/nombadinfo</loc>
+</url>
+<url>
+  <loc>https://microfluidics.berkeley.edu/sitemap</loc>
+</url>
+
+
+</urlset>
