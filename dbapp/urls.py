@@ -17,8 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from researchers import views 
-# from collection import views 
-
+# from collection import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
@@ -33,5 +32,4 @@ urlpatterns = [
     url(r'badinfo/$', views.badinfo, name='badinfo'),
     url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'), 
     url(r'feedback/$', views.feedback, name='feedback'),
-    url(r'sitemap/$', views.sitemap name='sitemap'),  
     ]

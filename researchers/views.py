@@ -28,9 +28,6 @@ def home(request):
     r = Researcher.objects.all()
     return render(request, 'home.html', {'researcher': r})
 
-def sitemap(request):
-    return render(request, 'sitemap.xml')
-
 def about(request):
     return render(request, 'about.html')
 
