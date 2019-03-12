@@ -25,7 +25,7 @@ import json
 # from .models import Nomination 
 
 def home(request):
-    r = Researcher.objects.all()
+    r = Researcher.objects.all().order_by('lastname')
     return render(request, 'home.html', {'researcher': r})
 
 def about(request):
