@@ -21,7 +21,7 @@
   {% for r in researcher %}
     <div class="researcher">
       
-	    <p> <a class="researcherwebname" href="{{ r.website_link }}">{{ r.name|title }}</a> | <a class="linkedinwebname" href="{{ r.linkedin_link }}"> LinkedIn</a> | {{ r.institution }} | <i>{{ r.des|capfirst }}</i>
+	    <p> <a class="researcherwebname" href="{{ r.website_link }}">{{ r.name|title }}</a>| {{ r.institution }} | <i>{{ r.des|capfirst }}</i>
        </p> 
  
     </div>

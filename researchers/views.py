@@ -47,6 +47,7 @@ def badinfo(request):
 def nombadinfo(request):
     return render(request, 'nombadinfo.html')
 
+
 def link_check(link):
     original = link
     if link == "":
@@ -54,21 +55,9 @@ def link_check(link):
     http = link.find("http://")
     https = link.find("https://")
     if (http == -1 and https == -1):
-        link = "https://" + link
+        link = "http://" + link
     http = link.find("http://")
     https = link.find("https://")
-    if (link.find("www.")==-1):
-        if http != -1:
-            link = link[:http + 7] + "www." + link[http + 7:]
-        else:
-            link = link[:https + 8] + "www." + link[https + 8:]
-    
-    try:
-        urllib.request.urlopen(link)
-    except urllib.error.HTTPError:
-        return original
-    except urllib.error.URLError:
-        return original
     return link
 
 def researcher_detail(request, id):
@@ -183,6 +172,7 @@ def nominee_info(request):
             response = urllib.request.urlopen(req)
             result = json.loads(response.read().decode())
             ''' End reCAPTCHA validation '''
+
             if not result['success']:
                 return redirect('/badinfo')
 
@@ -194,7 +184,6 @@ def nominee_info(request):
             new_position = request.POST.get('position', 'n/a')
             new_country = request.POST.get('country', 'n/a')
             new_website_link = link_check(request.POST.get('website', 'n/a'))
-            new_linkedin_link = link_check(request.POST.get('linkedin', 'n/a'))
             new_level = request.POST.get('level', 'n/a')
             new_des = request.POST.get('description', 'n/a')
             
@@ -207,7 +196,6 @@ def nominee_info(request):
                 existing_nominee.position = new_position
                 existing_nominee.country = new_country
                 existing_nominee.website_link = new_website_link
-                existing_nominee.linkedin_link = new_linkedin_link
                 existing_nominee.level = new_level
                 existing_nominee.des = new_des
                 existing_nominee.save()
@@ -218,7 +206,6 @@ def nominee_info(request):
                 new_nominee.position = new_position
                 new_nominee.country = new_country
                 new_nominee.website_link = new_website_link
-                new_nominee.linkedin_link = new_linkedin_link
                 new_nominee.level = new_level
                 new_nominee.des = new_des
                 new_nominee.save()

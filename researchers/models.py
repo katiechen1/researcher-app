@@ -40,7 +40,6 @@ class NominatedInfo(forms.Form):
     institution = forms.CharField(required=True)
     position = forms.CharField(required=True)
     website = forms.CharField(required=False)
-    linkedin = forms.CharField(required=True)
     country = forms.CharField(required=True)
     level = forms.ChoiceField(choices=LEVELS_CHOICES, required=True)
     description = forms.CharField(required=True,
