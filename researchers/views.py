@@ -178,7 +178,9 @@ def nominee_info(request):
 
 
 
-            new_name = request.POST.get('name', 'n/a')
+            new_firstname = request.POST.get('firstname', 'n/a')
+            new_lastname = request.POST.get('lastname','n/a')
+            new_fullname = new_lastname + ", " + new_firstname
             new_email = request.POST.get('email', 'n/a')
             new_institution = request.POST.get('institution', 'n/a')
             new_position = request.POST.get('position', 'n/a')
@@ -190,7 +192,9 @@ def nominee_info(request):
             existing_nominees = Researcher.objects.filter(email = new_email).exclude(email = 'n/a')
             if len(existing_nominees) == 1:
                 existing_nominee = existing_nominees[0]
-                existing_nominee.name = new_name
+                existing_nominee.firstname = new_firstname
+                existing_nominee.lastname = new_lastname
+                existing_nominee.fullname = new_fullname
                 existing_nominee.email = new_email
                 existing_nominee.institution = new_institution
                 existing_nominee.position = new_position
@@ -200,7 +204,9 @@ def nominee_info(request):
                 existing_nominee.des = new_des
                 existing_nominee.save()
             elif len(existing_nominees) == 0:
-                new_nominee.name = new_name
+                new_nominee.firstname = new_firstname
+                new_nominee.lastname = new_lastname
+                new_nominee.fullname = new_fullname
                 new_nominee.email = new_email
                 new_nominee.institution = new_institution
                 new_nominee.position = new_position

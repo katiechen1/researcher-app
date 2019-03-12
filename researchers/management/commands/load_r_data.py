@@ -26,7 +26,8 @@ class Command(BaseCommand):
 		print('Loading researchers from csv file.')
 		for row in DictReader(open('./researcher_data.csv')):
 			r = Researcher()
-			r.name = row['name']
+			r.firstname = row['firstname']
+                        r.lastname = row['lastname']
 			r.institution = row['institution']
 			r.position = row['position']
 			r.country = row['country']

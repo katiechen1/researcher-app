@@ -11,7 +11,9 @@ from django.utils.translation import gettext_lazy as _
 #Researcher objects for each researcher on the page 
 class Researcher(models.Model):
     LEVELS_CHOICES = [('Assistant Professor', 'Assistant Professor'), ('Associate Professor', 'Associate Professor'), ('Full Professor', 'Full Professor'), ('Senior Industry Scientist', 'Senior Industry Scientist')]
-    name = models.CharField(max_length=200)
+    firstname = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200, default="n/a")
+    fullname = models.CharField(max_length=200,default="n/a")
     email = models.CharField(max_length=200)
     institution = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
@@ -35,7 +37,8 @@ class NominateForm(forms.Form):
 # This is the form we send to nominated individual to get information needed to display
 class NominatedInfo(forms.Form):
     LEVELS_CHOICES = [('Assistant Professor', 'Assistant Professor'), ('Associate Professor', 'Associate Professor'), ('Full Professor', 'Full Professor'), ('Senior Industry Scientist', 'Senior Industry Scientist')]
-    name = forms.CharField(required=True)
+    firstname = forms.CharField(required=True)
+    lastname = forms.CharField(required=True)
     email = forms.EmailField(required=True)
     institution = forms.CharField(required=True)
     position = forms.CharField(required=True)

@@ -1,2 +1,2 @@
-name,institution,position,country,website_link,linkedin_link,level
-Katie Chen,UC Berkeley,undergrad,USA,xyz,xyz,EC
+firstname,lastname,institution,position,country,website_link,linkedin_link,level
+Katie,Chen,UC Berkeley,undergrad,USA,xyz,xyz,EC

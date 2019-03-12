@@ -37,7 +37,9 @@ window.onload = function() {
 <form role="form" action="" method="post">
     {% csrf_token %}
     
-<p><label for="id_name">Name:</label> <input type="text" name="name" required="" id="id_name" size ="40"></p>
+<p><label for="id_firstname">First Name:</label> <input type="text" name="firstname" required="" id="id_firstname" size ="40"></p>
+<p><label for="id_lastname">Last Name:</label> <input type="text" name="lastname" required="" id="id_lastname" size ="40"></p>
+
 <p><label for="id_email">Email:</label> <input type="email" name="email" required="" id="id_email" size ="40"></p>
 <p><label for="id_institution">Institution:</label> <input type="text" name="institution" required="" id="id_institution" size ="40"></p>
 <p><label for="id_position">Position:</label> <input type="text" name="position" required="" id="id_position" size ="40"></p>
