@@ -12,14 +12,13 @@ from django.utils.translation import gettext_lazy as _
 class Researcher(models.Model):
     LEVELS_CHOICES = [('Assistant Professor', 'Assistant Professor'), ('Associate Professor', 'Associate Professor'), ('Full Professor', 'Full Professor'), ('Senior Industry Scientist', 'Senior Industry Scientist')]
     firstname = models.CharField(max_length=200)
-    lastname = models.CharField(max_length=200, default="n/a")
-    fullname = models.CharField(max_length=200,default="n/a")
+    lastname = models.CharField(max_length=200, default="N/A")
+    fullname = models.CharField(max_length=200,default="N/A")
     email = models.CharField(max_length=200)
     institution = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
-    website_link = models.CharField(max_length=200)
-    linkedin_link = models.CharField(max_length=200)
+    website_link = models.CharField(max_length=200,default="N/A")
     level = models.CharField(choices=LEVELS_CHOICES, blank=True, max_length=200)
     des = models.CharField(max_length=200)
 

@@ -32,6 +32,5 @@ class Command(BaseCommand):
 			r.position = row['position']
 			r.country = row['country']
 			r.website_link = row['website_link']
-			r.linkedin_link = row['linkedin_link']
 			r.level = row['level']
 			r.save()

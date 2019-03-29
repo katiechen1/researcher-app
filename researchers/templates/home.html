@@ -20,9 +20,11 @@
 <div>
   {% for r in researcher %}
     <div class="researcher">
-      
-	    <p> <a class="researcherwebname" href="{{ r.website_link }}">{{ r.fullname|title}}</a> | {{ r.institution }} | <i>{{ r.des|capfirst }}</i>
-       </p> 
+	{% if "{{r.website_link}}" != "N/A" and "{{r.website_link}}" != "" %}
+	<p><a class="researcherwebname" href="{{ r.website_link }}">{{ r.fullname|title}}</a> | {{ r.institution }} | {{r.position}} | <i>{{ r.des|capfirst }}</i></p>
+	{% else %}
+	<p> {{ r.fullname|title}} | {{ r.institution }} | {{r.position}} | <i>{{ r.des|capfirst }}</i></p>
+	{% endif %}	
  
     </div>
   {% endfor %}
