@@ -33,7 +33,7 @@ window.onload = function() {
 <br>
  <p1 align="justify">
  
- <p><b>Congratulations!</b> You have been nominated for inclusion in the <i>Women</i> <i>in</i> <i>Microfluidics</i> list. We focus on independent researchers in the micro/nanofluidics and Bio-MEMS areas. To accept and be included on the <i>Women</i> <i>in</i> <i>Microfluidics</i> list, simply submit the form below. Beyond displaying your information on our website, we will not share your information further.</p>
+ <p><b>Congratulations!</b> You have been nominated for inclusion in the <i>Women</i> <i>in</i> <i>Microfluidics</i> <i>&</i> <i>BioMEMS</i> list. We focus on independent researchers in the micro/nanofluidics and Bio-MEMS areas. To accept and be included on the <i>Women</i> <i>in</i> <i>Microfluidics</i> <i>&</i> <i>BioMEMS</i> list, simply submit the form below. Beyond displaying your information on our website, we will not share your information further.</p>
 <form role="form" action="" method="post">
     {% csrf_token %}
     
@@ -154,18 +154,23 @@ window.onload = function() {
             </table> -->
 	
 	    <p> Before submitting, please double check that the information entered is as you would like it to appear.</p>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
-	<div class="g-recaptcha" data-sitekey="6LfA3n4UAAAAADCPo2-R6MnO4NgnCX1aSkFSDXPO"></div>
+	
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
+
+	<script src="https://www.google.com/recaptcha/api.js?render=6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32"></script>
 
 	<script>
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32', {action:'nominate'})
+			.then(function(token) {
+				 var recaptchaResponse = document.getElementById('recaptchaResponse');
+				                 recaptchaResponse.value = token;
+						});
+					});
 
-	window.onload = function() {
-	    var $recaptcha = document.querySelector('#g-recaptcha-response');
 
-	        if($recaptcha) {
-			        $recaptcha.setAttribute("required", "required");
-				    }
-};
+
 
 // Doing error handling on form submit won't work here because the validation blocks the submit event from firing.
 

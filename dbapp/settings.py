@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$oid#6bi+zj^w1+i1=zqz#gt&ds^&yg*9vjnttx&3llv^4dv-_'
 
 # Google Captcha Secret Key
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LfA3n4UAAAAAGCtrAoxTktxKJP5K_sNZFVCuWje'
+GOOGLE_RECAPTCHA_SECRET_KEY ='6Ldd-JoUAAAAABBgGdPcJLupv9gBUnDQ5_VuYkLz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

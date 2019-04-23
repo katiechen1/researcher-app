@@ -83,7 +83,7 @@ def nominate(request):
         if form.is_valid():
             
             ''' Begin reCAPTCHA validation '''
-            recaptcha_response = request.POST.get('g-recaptcha-response')
+            recaptcha_response = request.POST.get('recaptcha_response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
             values = {'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,'response': recaptcha_response}
             data = urllib.parse.urlencode(values).encode()
@@ -91,19 +91,20 @@ def nominate(request):
             response = urllib.request.urlopen(req)
             result = json.loads(response.read().decode())
             ''' End reCAPTCHA validation '''
-            if not result['success']:
-                return redirect('/badinfo')
 
+            '''
+            if (not result['success']) or (not result['action']=='nominate'):
+                print(result['success'])
+                print(result['action'])
+                return redirect('/badinfo')
+            '''
             nominators_name = request.POST.get('nominators_full_name', '')
             nominators_email = request.POST.get('nominators_email', '')
             nominees_name = request.POST.get('nominees_name', '')
             nominees_email = request.POST.get('nominees_email', '')
-            # nominees_website = request.POST.get('nominees_website', '')
-            # nominees_institution = request.POST.get('nominees_institution', '')
-
-            # plaintext = get_template("temp1.txt")
-            # html_temp = get_template("temp1.html")
-            d = { 'nominee_name': nominees_name, 'nominator': nominators_name }
+            affiliation = request.POST.get('affiliation', '')
+            
+            d = { 'nominee_name': nominees_name, 'nominator': nominators_name, 'affiliation':affiliation }
 
             subject = 'Women in Microfluidics: Accept your nomination to our grassroots list'
             from_email = settings.EMAIL_HOST_USER
@@ -111,20 +112,20 @@ def nominate(request):
             text_content = render_to_string("temp1.txt", d)
             html_content = render_to_string("temp1.html", d)
 
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email], cc=[str(nominators_email)])
             msg.send()
 
             d2 = {'nominator': nominators_name,'nominee_name': nominees_name}
+            if (nominators_email!=nominees_email):
+                subject2 = 'Women in Microfluidics: Thank you for your nomination'
+                from_email2 = settings.EMAIL_HOST_USER
+                to_email2 = [str(nominators_email)]
+                text_content2 = render_to_string("temp2.txt", d2)
+                html_content2 = render_to_string("temp2.html", d2)
 
-            subject2 = 'Women in Microfluidics: Thank you for your nomination'
-            from_email2 = settings.EMAIL_HOST_USER
-            to_email2 = [str(nominators_email)]
-            text_content2 = render_to_string("temp2.txt", d2)
-            html_content2 = render_to_string("temp2.html", d2)
-
-            msg2 = EmailMultiAlternatives(subject2, text_content2, from_email2, [to_email2])
-            msg2.send()
-
+                msg2 = EmailMultiAlternatives(subject2, text_content2, from_email2, [to_email2])
+                msg2.send()
+                
 
             return redirect('/thanks')
         else:
@@ -164,7 +165,7 @@ def nominee_info(request):
         if form.is_valid():
 
             ''' Begin reCAPTCHA validation '''
-            recaptcha_response = request.POST.get('g-recaptcha-response')
+            recaptcha_response = request.POST.get('recaptcha_response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
             values = {'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,'response': recaptcha_response}
             data = urllib.parse.urlencode(values).encode()
@@ -173,10 +174,13 @@ def nominee_info(request):
             result = json.loads(response.read().decode())
             ''' End reCAPTCHA validation '''
 
-            if not result['success']:
+            
+            '''
+            if (not result['success']) or (not result['action']=='nominate'):
+                print(result['success'])
+                print(result['action'])
                 return redirect('/badinfo')
-
-
+            '''
 
             new_firstname = request.POST.get('firstname', 'n/a')
             new_lastname = request.POST.get('lastname','n/a')

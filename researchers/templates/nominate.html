@@ -10,24 +10,22 @@
 {% endblock %}
 
 {% block content %}
-
+<body onunload="clearCheckBoxes()">
 
 <h2>Nominate Yourself or Someone Else</h2>
 
-<p>Please complete the nomination form below. We are seeking research-focused nominees, including established industry professionals and Academics (Assistant, Associate, Full Professor, to Emerita rank). Please note: Each Nominee will be contacted after nomination via automated email to confirm nomination acceptance and inclusion on our Women in Microfluidics list. We will let Nominees know who nominated them, but Nominator information will not be shared publicly.</p>
-<form role="form" action="" method="post">
+<p>Please complete the nomination form below. We are seeking research-focused nominees, including established industry professionals and Academics (Assistant, Associate, Full Professor, to Emerita rank). Please note: Each Nominee will be contacted after nomination via automated email to confirm nomination acceptance and inclusion on our Women in Microfluidics & BioMEMS list. We will let Nominees know who nominated them, but Nominator information will not be shared publicly.</p>
+<form role="form" action="" method="post" id="form">
     {% csrf_token %}
     <!-- {{ form.as_p }} -->
     <table cellspacing="0">
-                
-	   
-
+	          
 	    <tr>
 		    <td><label for="Nominator"><b>Nominator</b></label></td>
 	    </tr>	                    
 	      <tr>
 	      	<td><label for="nominators_full_name">Name:</label></td>
-                    <td><input type="text" id="nominators_full_name" name="nominators_full_name" required></td>
+                    <td><input type="text" style = "margin-left:20px;" id="nominators_full_name" name="nominators_full_name" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -37,8 +35,35 @@
               <tr class="spacer"><td></td></tr>
                 <tr>
                     <td><label for="nominators_email">Email:</label></td>
-                    <td><input type="email" id="nominators_email" name="nominators_email" required></td>
+                    <td><input type="email"  style = "margin-left:20px;" id="nominators_email" name="nominators_email" required></td>
                 </tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+               
+	      		<tr>
+			<td><label style="margin-top:5px;">I am nominating myself: </label></td>
+			<td><input style = "width:20px;height:20px;margin-left:20px;" id="checkbox" type="checkbox" name="check1" onclick="dynInput(this);"></td>
+		</tr>
+
+
+	              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+              <tr class="spacer"><td></td></tr>
+       
+	      
+	      
+	      <tr>
+                    <td><label class="nom" for="affiliation">Affiliation with Nominee:</label></td>
+                    <td><input class="nom" type="text"  style = "margin-left:20px;" id="affiliation" name="affiliation" required></td>
+                </tr>
+
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -63,14 +88,16 @@
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
-              
-	      <tr>
-
-		    <td><label for="Nominee"><b>Nominee</b></label></td>
+	      
+	      
+	      	      
+		<tr>
+		
+		    <td><label class= "nom" for="Nominee"><b>Nominee</b></label></td>
 		</tr>		    
 	      <tr>
-	      	    <td><label for="nominees_name">Name:</label></td>
-                    <td><input type="text" id="nominees_name" name="nominees_name" required></td>
+	      	    <td><label class="nom" for="nominees_name">Name:</label></td>
+                    <td><input class = "nom" type="text"  style = "margin-left:20px;" id="nominees_name" name="nominees_name" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -79,8 +106,8 @@
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
                 <tr>
-                    <td><label for="nominees_email">Email:</label></td>
-                    <td><input type="email" id="nominees_email" name="nominees_email" required></td>
+                    <td><label class = "nom" for="nominees_email">Email:</label></td>
+                    <td><input class = "nom" type="email"  style = "margin-left:20px;" id="nominees_email" name="nominees_email" required></td>
                 </tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
@@ -88,22 +115,51 @@
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
               <tr class="spacer"><td></td></tr>
-                
+	      
+
             </table>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
-	<div class="g-recaptcha" data-sitekey="6LfA3n4UAAAAADCPo2-R6MnO4NgnCX1aSkFSDXPO"></div>
+
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+	<script>
+		function clearCheckBoxes() {
+		    var inputs = document.getElementsByTagName("input");
+		        for (var i = 0; i < inputs.length; i++){
+			        if (inputs[i].type === 'checkbox')
+				            inputs[i].checked = false;
+			}}
+						</script>						
 
 	<script>
+	function dynInput(cbox) {
+		var elements = document.getElementsByClassName("nom")
+		for(var i=0; i<elements.length; i++) {
+			var x = elements[i];
+			if (cbox.checked) {
+				if (x.tagName.toLowerCase() == "input"){
+					x.required = false;
+				}
+				x.style.display="none";
+			} else {
+				if (x.tagName.toLowerCase() == "input"){
+					x.required = true;
+				}
+				x.style.display="block";
+			}}
+		}
 
-	window.onload = function() {
-	    var $recaptcha = document.querySelector('#g-recaptcha-response');
+	</script>
 
-	        if($recaptcha) {
-			        $recaptcha.setAttribute("required", "required");
-				    }
 
-	
-	};
+	<script src="https://www.google.com/recaptcha/api.js?render=6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32"></script>
+
+	<script>
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32', {action:'nominate'})
+			.then(function(token) {
+				 var recaptchaResponse = document.getElementById('recaptchaResponse');
+				                 recaptchaResponse.value = token;
+						});
+					});
 
 
 
@@ -128,7 +184,20 @@ for(let input of inputs) {
 
 
 	</script>
-    <button type="submit">Submit</button>
+
+	<script>
+	function fill() {
+		    // DO STUFF...
+		if (document.getElementById("checkbox").checked){
+		document.getElementById("nominees_name").value = document.getElementById("nominators_full_name").value ;
+		document.getElementById("nominees_email").value = document.getElementById("nominators_email").value ;
+		document.getElementById("affiliation").value = "self" ;
+		}
+		return true; // return false to cancel form action
+	}
+	</script>
+    <button type="submit" onclick="fill()">Submit</button>
 </form>
+</body>
 {% endblock %}
 
