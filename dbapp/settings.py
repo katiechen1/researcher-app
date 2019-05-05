@@ -26,7 +26,7 @@ SECRET_KEY = '$oid#6bi+zj^w1+i1=zqz#gt&ds^&yg*9vjnttx&3llv^4dv-_'
 GOOGLE_RECAPTCHA_SECRET_KEY ='6Ldd-JoUAAAAABBgGdPcJLupv9gBUnDQ5_VuYkLz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['localhost', 'microfluidics.berkeley.edu', 'microfluidics-berkeley-edu.dev-apphost.ocf.berkeley.edu']
 
 

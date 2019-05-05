@@ -40,6 +40,9 @@ def thanks(request):
 def nomthanks(request):
     return render(request, 'nomthanks.html')
 
+def alreadyexists(request):
+    return render(request,'alreadyexists.html')
+
 def badinfo(request):
  
     return render(request, 'badinfo.html')
@@ -109,24 +112,36 @@ def nominate(request):
             subject = 'Women in Microfluidics: Accept your nomination to our grassroots list'
             from_email = settings.EMAIL_HOST_USER
             to_email = [str(nominees_email)]
-            text_content = render_to_string("temp1.txt", d)
-            html_content = render_to_string("temp1.html", d)
+            html_content = render_to_string("temp3.html", d)
 
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email], cc=[str(nominators_email)])
-            msg.send()
+            msg = EmailMultiAlternatives(subject, html_content, from_email, [to_email])
+            msg.content_subtype = "html"
 
             d2 = {'nominator': nominators_name,'nominee_name': nominees_name}
-            if (nominators_email!=nominees_email):
+            existing_nominees = Researcher.objects.filter(email = nominees_email).exclude(email = 'n/a')
+            if len(existing_nominees) > 0:
+                return redirect('alreadyexists')
+
+            elif (nominators_email!=nominees_email):
+                
+                html_content = render_to_string("temp1.html", d)
+
+                msg1 = EmailMultiAlternatives(subject, html_content, from_email, [to_email])
+                msg1.content_subtype = "html"
+                msg1.send()
+
+                d2 = {'nominator': nominators_name,'nominee_name': nominees_name}
                 subject2 = 'Women in Microfluidics: Thank you for your nomination'
                 from_email2 = settings.EMAIL_HOST_USER
                 to_email2 = [str(nominators_email)]
-                text_content2 = render_to_string("temp2.txt", d2)
                 html_content2 = render_to_string("temp2.html", d2)
 
-                msg2 = EmailMultiAlternatives(subject2, text_content2, from_email2, [to_email2])
+                msg2 = EmailMultiAlternatives(subject2, html_content2, from_email2, [to_email2])
+                msg2.content_subtype = "html"
                 msg2.send()
-                
-
+            else:
+                msg.send()
+        
             return redirect('/thanks')
         else:
             return redirect('/badinfo')

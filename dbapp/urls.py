@@ -32,4 +32,4 @@ urlpatterns = [
     url(r'badinfo/$', views.badinfo, name='badinfo'),
     url(r'nombadinfo/$', views.nombadinfo, name='nombadinfo'), 
     url(r'feedback/$', views.feedback, name='feedback'),
-    ]
+    url(r'alreadyexists/$',views.alreadyexists,name='alreadyexists')]
