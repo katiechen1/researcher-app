@@ -86,7 +86,7 @@ def nominate(request):
         if form.is_valid():
             
             ''' Begin reCAPTCHA validation '''
-            recaptcha_response = request.POST.get('recaptcha_response')
+            recaptcha_response = request.POST.get('g-recaptcha-response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
             values = {'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,'response': recaptcha_response}
             data = urllib.parse.urlencode(values).encode()
@@ -95,12 +95,11 @@ def nominate(request):
             result = json.loads(response.read().decode())
             ''' End reCAPTCHA validation '''
 
-            '''
+                
             if (not result['success']) or (not result['action']=='nominate'):
-                print(result['success'])
-                print(result['action'])
                 return redirect('/badinfo')
-            '''
+
+
             nominators_name = request.POST.get('nominators_full_name', '')
             nominators_email = request.POST.get('nominators_email', '')
             nominees_name = request.POST.get('nominees_name', '')

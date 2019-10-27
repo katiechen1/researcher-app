@@ -9,9 +9,12 @@
   </style>
 {% endblock %}
 
+
+
 {% block content %}
 <body onunload="clearCheckBoxes()">
 
+	<script src="https://www.google.com/recaptcha/api.js?render=6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32"></script>
 <h2>Nominate Yourself or Someone Else</h2>
 
 <p>Please complete the nomination form below. We are seeking research-focused nominees, including established industry professionals and academics leading their own laboratories in micro/nanofluidics and Bio-MEMS (i.e., more senior than postdoctoral scholars). Please note: Each Nominee will be contacted after nomination via automated email to confirm nomination acceptance and inclusion on our Women in Microfluidics & BioMEMS list. We will let Nominees know who nominated them, but Nominator information will not be shared publicly.</p>
@@ -117,10 +120,29 @@
               <tr class="spacer"><td></td></tr>
 	      
 
+
+	      <input type="hidden" name="g-recaptcha-response" id='recaptcha'>
+
+
             </table>
 
-        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-	<script>
+
+
+		<script>
+
+		grecaptcha.ready(function() {
+			        
+			grecaptcha.execute('6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32', {action: 'nominate'}).then(function(token) {
+					document.getElementById('recaptcha').value=token;
+			
+				});
+			});
+
+		</script>
+
+
+
+        	<script>
 		function clearCheckBoxes() {
 		    var inputs = document.getElementsByTagName("input");
 		        for (var i = 0; i < inputs.length; i++){
@@ -149,19 +171,7 @@
 
 	</script>
 
-
-	<script src="https://www.google.com/recaptcha/api.js?render=6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32"></script>
-
 	<script>
-	grecaptcha.ready(function() {
-		grecaptcha.execute('6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32', {action:'nominate'})
-			.then(function(token) {
-				 var recaptchaResponse = document.getElementById('recaptchaResponse');
-				                 recaptchaResponse.value = token;
-						});
-					});
-
-
 
 	// Doing error handling on form submit won't work here because the validation blocks the submit event from firing.
 
@@ -187,6 +197,11 @@ for(let input of inputs) {
 
 	<script>
 	function fill() {
+
+
+
+
+
 		    // DO STUFF...
 		if (document.getElementById("checkbox").checked){
 		document.getElementById("nominees_name").value = document.getElementById("nominators_full_name").value ;
@@ -196,6 +211,7 @@ for(let input of inputs) {
 		return true; // return false to cancel form action
 	}
 	</script>
+
     <button type="submit" onclick="fill()">Submit</button>
 </form>
 </body>
