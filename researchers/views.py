@@ -95,7 +95,7 @@ def nominate(request):
             result = json.loads(response.read().decode())
             ''' End reCAPTCHA validation '''
 
-                
+
             if (not result['success']) or (not result['action']=='nominate'):
                 return redirect('/badinfo')
 
@@ -189,12 +189,9 @@ def nominee_info(request):
             ''' End reCAPTCHA validation '''
 
             
-            '''
+        
             if (not result['success']) or (not result['action']=='nominate'):
-                print(result['success'])
-                print(result['action'])
                 return redirect('/badinfo')
-            '''
 
             new_firstname = request.POST.get('firstname', 'n/a')
             new_lastname = request.POST.get('lastname','n/a')

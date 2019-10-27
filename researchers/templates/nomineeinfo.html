@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+	<script src="https://www.google.com/recaptcha/api.js?render=6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32"></script>
+
+	<script>
+	grecaptcha.ready(function() {
+		grecaptcha.execute('6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32', {action:'nominate'})
+			.then(function(token) {
+				 var recaptchaResponse = document.getElementById('recaptchaResponse');
+				                 recaptchaResponse.value = token;
+						});
+					});
+
+
+	</script>
+
+
 <h1>Accept your nomination</h1>
 <!--
 <script>
@@ -157,20 +173,7 @@ window.onload = function() {
 	
         <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
-
-	<script src="https://www.google.com/recaptcha/api.js?render=6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32"></script>
-
 	<script>
-	grecaptcha.ready(function() {
-		grecaptcha.execute('6Ldd-JoUAAAAAOaHiAwDMQuQMQY4_u8amHOmzw32', {action:'nominate'})
-			.then(function(token) {
-				 var recaptchaResponse = document.getElementById('recaptchaResponse');
-				                 recaptchaResponse.value = token;
-						});
-					});
-
-
-
 
 // Doing error handling on form submit won't work here because the validation blocks the submit event from firing.
 
